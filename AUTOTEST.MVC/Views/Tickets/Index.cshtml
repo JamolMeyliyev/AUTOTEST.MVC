@@ -1,0 +1,20 @@
+﻿@model User
+<div class="allcard">
+    @foreach (var ticket in Model.Tickets)
+    {
+        <div class="card" style="width: 8rem;">
+            <img src="/Autotest/fon.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Ticket-@(ticket.Id)</h5>
+                <p class="card-text">@ticket.CorrectCount / @ticket.QuestionsCount</p>
+                @{
+                    if ((ticket.Date != default))
+                    {
+                        <p class="card-text">@ticket.Date.ToString()</p>
+                    }
+                }
+                <a asp-controller="Tickets" asp-action="StartTicket" asp-route-ticketIndex="@(ticket.Id)">Start</a>
+            </div>
+        </div>
+    }
+</div>

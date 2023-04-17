@@ -1,0 +1,20 @@
+﻿@model SignInUserModel
+
+<h1>Sign In</h1>
+<div style="margin:0 auto;width:50%;display:flex;justify-content:center; border-radius: 60px; box-shadow: 0 0 40px rgba(8,7,16,0.6);">
+<form class="row g-3" style="width: 400px" asp-controller="Users" asp-action="SignIn" method="post">
+        <div style="margin-top: 35px;">
+        <input name="Username" class="form-control" asp-for="Username" type="text" placeholder="Username" />
+        <span class="text-danger" asp-validation-for="Username"></span>
+    </div>
+    <div>
+        <input name="Password" class="form-control" asp-for="Password" type="text" placeholder="Password" />
+        <span class="text-danger" asp-validation-for="Password"></span>
+    </div >
+    <button class="form-control" type="submit">Sign In</button>
+    <div style="margin-bottom:15px;">
+            <a class="link-info" asp-controller="Users" asp-action="SignUp">Sign Up</a>
+    </div>
+    
+</form>
+</div>

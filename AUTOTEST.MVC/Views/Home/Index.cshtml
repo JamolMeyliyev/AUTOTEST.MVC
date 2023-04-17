@@ -1,0 +1,49 @@
+﻿@using AUTOTEST.MVC.Repositories
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@inject UserRepository UserRepository
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Users </h1>
+
+<div class="text-center"  style=" border:3px solid black; border-radius :15px;">
+   
+    
+
+
+
+
+@{
+    var users = UserRepository.GetUsers();
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Name</th>
+                <th scope="col">CorrectCount</th>
+            </tr> 
+        </thead>
+        <tbody>
+
+            @for (int i = 0; i < users.Count; i++)
+            {
+                var user = users[i];
+
+                <tr>
+                    <th scope="row">@(i + 1)</th>
+                    <td>@user.Username</td>
+                    <td>@user.Name</td>
+                    <td>@user.Tickets.Sum(t=>t.CorrectCount)</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+</div>
+
